@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hortifruti Donadio - Gerenciamento de Estoque</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Hortifruti Donadio</h1>
+        <p>Gerenciamento de Estoque de Frutas e Legumes</p>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <form id="product-form">
+                <div>
+                    <label for="product-name">Nome do Produto</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div>
+                    <label for="quantity">Quantidade</label>
+                    <input type="number" id="quantity" min="0" required>
+                </div>
+                <div>
+                    <label for="expiry-date">Validade</label>
+                    <input type="date" id="expiry-date" required>
+                </div>
+                <button type="submit">Adicionar Produto</button>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade</th>
+                    <th>Validade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="inventory-table">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
