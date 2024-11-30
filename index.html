@@ -28,6 +28,15 @@
                     <input type="number" id="quantity" min="0" required>
                 </div>
                 <div>
+                    <label for="volume-type">Tipo de Volume</label>
+                    <select id="volume-type" required>
+                        <option value="KG">KG</option>
+                        <option value="Unidade">Unidade</option>
+                        <option value="Fardo">Fardo</option>
+                        <option value="Lote">Lote</option>
+                    </select>
+                </div>
+                <div>
                     <label for="expiry-date">Validade</label>
                     <input type="date" id="expiry-date" required>
                 </div>
@@ -35,9 +44,20 @@
             </form>
         </div>
 
+        <!-- Barra de Pesquisa e Filtros -->
+        <div class="search-and-filters">
+            <input type="text" id="search-bar" placeholder="Pesquisar por Nome ou ID">
+            <button id="filter-az">Ordenar A-Z</button>
+            <button id="filter-quantity">Ordenar por Quantidade</button>
+            <button id="filter-expiry-nearest">Validade Mais Próxima</button>
+            <button id="filter-expiry-furthest">Validade Mais Distante</button>
+        </div>
+
+        <!-- Tabela de Estoque -->
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nome do Produto</th>
                     <th>Preço</th>
                     <th>Quantidade</th>
@@ -48,7 +68,6 @@
             <tbody id="inventory-table">
             </tbody>
         </table>
-        
     </div>
 
     <script src="scripts.js"></script>

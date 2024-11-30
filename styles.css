@@ -46,6 +46,12 @@ input {
     width: 100%;
 }
 
+input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
 button {
     background-color: #4CAF50;
     color: white;
@@ -57,6 +63,42 @@ button {
 }
 
 button:hover {
+    background-color: #45a049;
+}
+
+/* Barra de Pesquisa e Filtros */
+.search-and-filters {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#search-bar {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-and-filters button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.search-and-filters button:hover {
     background-color: #45a049;
 }
 
@@ -114,9 +156,23 @@ td:last-child {
     background-color: #cc0000;
 }
 
+.edit-btn {
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #cc8400;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
     body {
-        padding: 1rem; /* Adiciona um pouco de margem nas laterais em telas menores */
+        padding: 1rem;
     }
 
     .container {
@@ -139,6 +195,20 @@ td:last-child {
         font-size: 14px; /* Ajusta o tamanho da fonte em inputs e botões */
     }
 
+    .search-and-filters {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #search-bar {
+        font-size: 0.9rem;
+    }
+
+    .search-and-filters button {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+
     table {
         display: block; /* Para que a tabela seja rolável horizontalmente */
         overflow-x: auto;
@@ -146,13 +216,13 @@ td:last-child {
     }
 
     th, td {
-        padding: 0.8rem; /* Reduz o padding nas células em telas menores */
+        padding: 0.8rem;
     }
 }
 
 @media (max-width: 480px) {
     header {
-        font-size: 1.2rem; /* Ajuste de tamanho de fonte no cabeçalho */
+        font-size: 1.2rem;
     }
 
     .container {
@@ -164,15 +234,15 @@ td:last-child {
     }
 
     input, button {
-        font-size: 12px; /* Ajuste de tamanho de fonte em inputs e botões para telas muito pequenas */
+        font-size: 12px;
     }
 
-    .delete-btn {
-        padding: 0.5rem 0.8rem; /* Ajusta o botão de exclusão para telas muito pequenas */
+    .delete-btn, .edit-btn {
+        padding: 0.5rem 0.8rem;
     }
 
     table {
-        font-size: 12px; /* Diminui o tamanho da fonte na tabela para telas pequenas */
+        font-size: 12px;
     }
 }
 
