@@ -1,0 +1,307 @@
+<html><head><base href="/">
+<title>Hortifruti Donadio - Gerenciamento de Estoque</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+    background-color: #f8fff4; /* Verde claro suave */
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(90deg, #6DC36D, #4CAF50);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 5px solid #3E8E41;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid #4CAF50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    align-items: end;
+}
+
+form div label {
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+input {
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+button {
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #3e8e41;
+    transform: scale(1.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #4CAF50;
+}
+
+th, td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: linear-gradient(90deg, #6DC36D, #4CAF50);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f9f1; /* Tom claro para destaque */
+    transition: background-color 0.3s;
+}
+
+.delete-btn {
+    background-color: #ff5252;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+    transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.8rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.5rem;
+        padding: 1rem 0.5rem;
+    }
+
+    form div label {
+        font-size: 0.9rem;
+    }
+
+    form div input {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Hortifruti Donadio</h1>
+        <p>Gerenciamento de Estoque de Frutas e Legumes</p>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <form id="product-form">
+                <div>
+                    <label for="product-name">Nome do Produto</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div>
+                    <label for="quantity">Quantidade</label>
+                    <input type="number" id="quantity" min="0" required>
+                </div>
+                <div>
+                    <label for="expiry-date">Validade</label>
+                    <input type="date" id="expiry-date" required>
+                </div>
+                <button type="submit">Adicionar Produto</button>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade</th>
+                    <th>Validade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="inventory-table">
+            </tbody>
+        </table>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('product-form');
+    const inventoryTable = document.getElementById('inventory-table');
+    
+    // Initial products
+    const initialProducts = [
+        { name: 'Maçã', quantity: 100, expiry: '2024-03-15' },
+        { name: 'Banana', quantity: 150, expiry: '2024-03-10' },
+        { name: 'Laranja', quantity: 200, expiry: '2024-03-20' },
+        { name: 'Tomate', quantity: 80, expiry: '2024-03-12' },
+        { name: 'Alface', quantity: 50, expiry: '2024-03-08' }
+    ];
+
+    // Add initial products to table
+    initialProducts.forEach(product => addProductToTable(product));
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const productName = document.getElementById('product-name').value;
+        const quantity = document.getElementById('quantity').value;
+        const expiryDate = document.getElementById('expiry-date').value;
+
+        if (!productName || !quantity || !expiryDate) {
+            alert('Por favor, preencha todos os campos!');
+            return;
+        }
+
+        const product = {
+            name: productName,
+            quantity: quantity,
+            expiry: expiryDate
+        };
+
+        addProductToTable(product);
+        form.reset();
+    });
+
+    function addProductToTable(product) {
+        const row = document.createElement('tr');
+        
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR');
+        };
+
+        row.innerHTML = `
+            <td>${product.name}</td>
+            <td>${product.quantity}</td>
+            <td>${formatDate(product.expiry)}</td>
+            <td>
+                <button class="delete-btn" onclick="this.closest('tr').remove()">
+                    Excluir
+                </button>
+            </td>
+        `;
+
+        inventoryTable.appendChild(row);
+    }
+});
+</script>
+</body>
+</html>
